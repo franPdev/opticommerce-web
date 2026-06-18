@@ -12,13 +12,13 @@ export const DashboardPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col" style={{ gap: '3rem' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: '2.5rem' }}>
+      <div className="flex flex-col gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {[1, 2, 3, 4].map((i) => (
             <Skeleton key={i} height="140px" className="rounded-2xl" />
           ))}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3" style={{ gap: '2.5rem' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
           <Skeleton height="350px" className="lg:col-span-2 rounded-2xl" />
           <Skeleton height="350px" className="rounded-2xl" />
         </div>
@@ -27,24 +27,28 @@ export const DashboardPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col" style={{ gap: '3rem' }}>
+    <div className="flex flex-col gap-8 md:gap-12">
       {/* KPIs */}
       <KPIGrid products={products} />
 
       {/* Charts row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3" style={{ gap: '2.5rem' }}>
-        <div className="lg:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
+        <div className="lg:col-span-2 min-w-0 w-full overflow-hidden">
           <SalesChart />
         </div>
-        <StockStatusChart />
+        <div className="min-w-0 w-full overflow-hidden">
+          <StockStatusChart />
+        </div>
       </div>
 
       {/* Table + Alerts row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3" style={{ gap: '2.5rem' }}>
-        <div className="lg:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
+        <div className="lg:col-span-2 min-w-0 w-full overflow-hidden">
           <InventoryTable products={products} compact />
         </div>
-        <AlertsPanel alerts={alerts} compact />
+        <div className="min-w-0 w-full overflow-hidden">
+          <AlertsPanel alerts={alerts} compact />
+        </div>
       </div>
     </div>
   );

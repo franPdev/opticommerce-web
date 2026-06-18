@@ -24,8 +24,8 @@ export const StockStatusChart: React.FC = () => {
       <h3 className="text-base font-semibold text-text-primary mb-1">Distribución de Stock</h3>
       <p className="text-xs text-text-muted mb-4">Por categoría de producto</p>
 
-      <div className="flex items-center gap-6">
-        <div className="w-[180px] h-[180px] relative">
+      <div className="flex flex-col sm:flex-row items-center gap-6 justify-center">
+        <div className="w-[180px] h-[180px] relative flex-shrink-0">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -51,7 +51,7 @@ export const StockStatusChart: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 space-y-2">
+        <div className="flex-1 space-y-2 w-full">
           {mockCategoryDistribution.map((cat) => (
             <div key={cat.category} className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">

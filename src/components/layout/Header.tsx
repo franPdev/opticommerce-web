@@ -1,39 +1,36 @@
 import React from 'react';
-import { Bell, Search, User } from 'lucide-react';
+import { Bell, User, Menu } from 'lucide-react';
 import { StatusIndicator } from '../ui/StatusIndicator';
 
 interface HeaderProps {
   title: string;
   subtitle?: string;
   unreadAlerts: number;
+  onMenuToggle?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, subtitle, unreadAlerts }) => {
+export const Header: React.FC<HeaderProps> = ({ title, subtitle, unreadAlerts, onMenuToggle }) => {
   return (
     <header 
-      className="h-20 border-b border-border-default bg-bg-surface/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-30"
-      style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
+      className="h-20 border-b border-border-default bg-bg-surface/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-30 px-4 sm:px-6 md:px-10"
     >
-      {/* Left: Title */}
-      <div>
-        <h1 className="text-xl font-bold text-text-primary">{title}</h1>
-        {subtitle && <p className="text-sm text-text-muted mt-1">{subtitle}</p>}
+      {/* Left: Title & Mobile menu button */}
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        <button
+          onClick={onMenuToggle}
+          className="md:hidden p-2 -ml-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors flex-shrink-0"
+          aria-label="Abrir menú"
+        >
+          <Menu className="w-5.5 h-5.5" />
+        </button>
+        <div className="min-w-0">
+          <h1 className="text-base sm:text-lg md:text-xl font-bold text-text-primary truncate">{title}</h1>
+          {subtitle && <p className="text-xs md:text-sm text-text-muted mt-0.5 md:mt-1 truncate hidden sm:block">{subtitle}</p>}
+        </div>
       </div>
 
       {/* Right: Actions */}
-      <div className="flex items-center gap-8">
-        {/* Search */}
-        <div className="hidden md:flex items-center gap-2 bg-bg-elevated rounded-xl px-3 py-2 border border-border-default focus-within:border-primary-500/50 transition-colors">
-          <Search className="w-4 h-4 text-text-muted" />
-          <input
-            type="text"
-            placeholder="Buscar productos..."
-            className="bg-transparent text-sm text-text-primary placeholder-text-muted outline-none w-48"
-          />
-          <kbd className="hidden lg:inline-flex text-[10px] text-text-muted bg-bg-primary px-1.5 py-0.5 rounded border border-border-default">
-            ⌘K
-          </kbd>
-        </div>
+      <div className="flex items-center gap-3 sm:gap-6 md:gap-8 flex-shrink-0">
 
         {/* Status */}
         <StatusIndicator status="online" label="Sistema activo" />

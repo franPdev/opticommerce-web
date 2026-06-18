@@ -39,7 +39,7 @@ export const LiquidationStrategyComponent: React.FC<LiquidationStrategyProps> = 
         </div>
 
         {/* Recovery stats */}
-        <div className="grid grid-cols-3 gap-3 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
           <div className="bg-bg-primary/50 rounded-xl p-3 text-center">
             <p className="text-lg font-bold text-danger-400">{formatCurrency(strategy.totalAtRisk)}</p>
             <p className="text-[11px] text-text-muted">Capital en riesgo</p>

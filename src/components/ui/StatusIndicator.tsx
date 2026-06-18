@@ -37,7 +37,7 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({
           className={`relative inline-flex rounded-full h-2.5 w-2.5 ring-4 ${colorMap[status]} ${ringMap[status]}`}
         />
       </span>
-      {label && <span className="text-sm text-text-secondary">{label}</span>}
+      {label && <span className="text-sm text-text-secondary hidden sm:inline">{label}</span>}
     </div>
   );
 };
